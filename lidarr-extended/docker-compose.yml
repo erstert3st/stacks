@@ -1,0 +1,44 @@
+version: "2.1"
+services:
+  lidarr-extended:
+    image: randomninjaatk/lidarr-extended:latest
+    container_name: lidarr-extended
+    volumes:
+      - /mnt/ssd/media/config_Music:/config
+      - /mnt/ssd/media/download/downloads-lidarr:/downloads-lidarr-extended
+      - /mnt/ssd/media/music:/music
+      - /mnt/ssd/media/musicvideo:/music-videos
+    environment:
+      - TZ=Europe/Berlin
+      - PUID=1000
+      - PGID=1000
+      - enableAudioScript=true
+      - enableVideoScript=true
+      - scriptInterval=15m
+      - configureLidarrWithOptimalSettings=true
+      - searchSort=date
+      - audioFormat=native
+      - audioBitrate=lossless
+      - requireQuality=true
+      - enableReplaygainTags=true
+      - audioLyricType=both
+      - dlClientSource=both
+      - arlToken=be8d811cbb9ee8057c60059ece3a392b0c2c564288d1c66b9c347f7f0d962fd9730c45a5e8d6695a59ace541addf924f25e0975c4dc442533f16b04b8a5ae18c78c4cc02824048debcfe37f54e9ddc64809da7b533555df3849404e3f8eb41a0
+      - tidalCountryCode=DE
+      - addDeezerTopArtists=true
+      - addDeezerTopAlbumArtists=true
+      - addDeezerTopTrackArtists=true
+      - topLimit=10
+      - addRelatedArtists=false
+      - numberOfRelatedArtistsToAddPerArtist=5
+      - addFeaturedVideoArtists=false
+      - plexUrl=http://x.x.x.x:32400
+      - plexToken=Token_Goes_Here
+      - youtubeSubtitleLanguage=en
+      - enableQueueCleaner=true
+      - matchDistance=5
+      - enableBeetsTagging=true
+      - beetsMatchPercentage=90
+    ports:
+      - 8120:8686
+    restart: unless-stopped

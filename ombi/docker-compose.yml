@@ -1,0 +1,16 @@
+---
+version: "2.1"
+services:
+  ombi:
+    image: lscr.io/linuxserver/ombi:4.33.1-development
+    container_name: ombi
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+      - BASE_URL=/ombi #optional
+    volumes:
+      - /mnt/ssd/media/config/ombi:/config
+    ports:
+      - 8120:3579
+    restart: unless-stopped

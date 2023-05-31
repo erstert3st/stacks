@@ -1,0 +1,16 @@
+version: "2.1"
+services:
+  pyload_std:
+    image: lscr.io/linuxserver/pyload:latest
+    container_name: pyload_std
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+    volumes:
+      - /mnt/ssd/media/config_pyload_classic:/config:/config
+      - /mnt/ssd/media/download/downloads:/downloads
+    ports:
+      - 8111:8000
+      - 8211:7227 #optional
+    restart: unless-stopped

@@ -1,0 +1,21 @@
+version: "2"
+services:
+  db:
+      image: mariadb:latest
+      hostname: db
+      restart: always
+      environment:
+        MARIADB_ROOT_PASSWORD: password
+        hostname: "db"
+      volumes:
+          - /mnt/ssd/media/db/config_mariadb:/var/lib/mysql
+      ports:
+          - 3306:3306  
+  phpmyadmin:
+      image: phpmyadmin
+      restart: always
+      ports:
+          - 8009:80
+      environment:
+          - PMA_ARBITRARY=1
+          - PMA_HOST=10.0.0.13

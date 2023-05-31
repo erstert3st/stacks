@@ -1,0 +1,29 @@
+version: '3.5'
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin 
+      - JELLYFIN_PublishedServerUrl=10.0.0.13
+    volumes:
+      - /mnt/ssd/media/config/jellyfin:/config
+      - /mnt/ssd/media/cache:/cache
+      - /mnt/ssd/media/tv:/data/tvshows
+      - /mnt/ssd/media/tv-opa:/data/tvshows-opa
+      - /mnt/ssd/media/movie:/data/movies
+      - /mnt/ssd/media/music:/data/music
+      - /mnt/ssd/media/movie-opa:/data/movies-opa
+    # Optional - alternative address used for autodiscovery
+    #environment:
+     # - JELLYFIN_PublishedServerUrl=http://server.local:8096
+    # Optional - may be necessary for docker healthcheck to pass if running in host network mode
+    ports:
+      - 8096:8096
+      #- 8920:8920 
+      - 7359:7359/udp 
+      - 1900:1900/udp 
+    restart: unless-stopped
+

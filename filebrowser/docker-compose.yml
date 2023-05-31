@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  filebrowser:
+    image: hurlenko/filebrowser:latest
+    user: "${UID}:${GID}"
+    ports:
+      - 8112:8080
+    volumes:
+      - /mnt/ssd:/data
+      - /mnt/ssd/media/config/FileBrowser:/config
+    environment:
+      - FB_BASEURL=/filebrowser
+    restart: always
