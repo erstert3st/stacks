@@ -15,7 +15,7 @@ services:
         #- /mnt/ssd/media/logs/config_jdownl:/opt/JDownloader/app/logs #optional
     environment: 
       MYJDOWNLOADER_EMAIL: ahhdqdkanquasndfdc@tmmwj.net #optional (see [Identify](https://github.com/jaymoulin/docker-jdownloader#identify))
-      MYJDOWNLOADER_PASSWORD: 123456789Kk #optional (see [Identify](https://github.com/jaymoulin/docker-jdownloader#identify))
+      MYJDOWNLOADER_PASSWORD: 1234567 #optional (see [Identify](https://github.com/jaymoulin/docker-jdownloader#identify))
       MYJDOWNLOADER_DEVICE_NAME: raspberrypi #optional
       WEB_LISTENING_PORT: 5800
       #JDOWNLOADER_HEADLESS: 0
